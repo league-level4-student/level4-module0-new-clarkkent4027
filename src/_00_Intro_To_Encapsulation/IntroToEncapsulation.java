@@ -11,10 +11,14 @@ public class IntroToEncapsulation {
 		 */
 
 		// 1. Create a Vehicle object.
-
+		Vehicle truck = new Vehicle();
 		// 2. Use the vehicle's setters to change fuelTankCapacity and mpg.
+		truck.setMpg(60);
+
+		truck.setFuelTankCapacity(50);
 
 		// 3. Call setFuelInTank with an amount greater than the capacity.
+		truck.setFuelInTank(100);
 
 		// Note: The reason setFuelInTank doesn't show up is because it's private.
 
@@ -22,20 +26,28 @@ public class IntroToEncapsulation {
 		// Hint: Access modifiers are described at the top of the Vehicle class.
 
 		// 5. Create a setter for the vehicle's color then set its color using it.
-
+		truck.setColor(111);
 		// 6. Create local variables for fuelTankCapacity, fuelInTank and mpg.
-
+		int fuelTankCapacity = truck.getFuelTankCapacity();
+		int fuelInTank = truck.getFuelInTank();
+		int mpg = truck.getMpg();
 		// 7. Use the vehicle's getters to initialize all of them.
 		// Note: You may need to fix some access modifiers.
 
 		// 8. Create a getter for color and do the same thing you did for steps 6 & 7.
-
+		int color = truck.getColor();
 		// 9. Print out all the local variables.
-
+		System.out.println(fuelTankCapacity);
+		System.out.println(fuelInTank);
+		System.out.println(mpg);
+		System.out.println(color);
 		// 10. If you haven't already, completely encapsulate the Vehicle class.
 		// Hint: Make all member variables private and all getters/setters public.
 
 		// 11. Drive the vehicle until it runs out of gas.
+		while (truck.getFuelInTank()> 0) {
+			truck.drive();
+		}
 	}
 
 }
@@ -46,24 +58,27 @@ class Vehicle {
 
 	// public makes the member accessible from anywhere in the project.
 
-	public int fuelTankCapacity;
-
+	private int fuelTankCapacity;
 	// private makes the member accessible only within the class.
 
 	private int fuelInTank;
 
 	// protected makes the member accessible only to subclasses and the package.
 
-	protected String color;
+	private int color;
 
 	// no access modifier makes the member accessible only to the package.
 
-	int mpg;
+	private int mpg;
 
 	// A setter changes a member variable.
 
 	public void setMpg(int mpg) {
 		this.mpg = mpg;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
 	}
 
 	// More complex setters can be created if you want to limit changes to members.
@@ -77,7 +92,7 @@ class Vehicle {
 		}
 	}
 
-	private void setFuelInTank(int fuelInTank) {
+	public void setFuelInTank(int fuelInTank) {
 		if (fuelInTank >= 0 && fuelInTank <= fuelTankCapacity) {
 			this.fuelInTank = fuelInTank;
 		} else {
@@ -88,16 +103,21 @@ class Vehicle {
 
 	// A getter returns a member variable.
 
-	private int getFuelTankCapacity() {
+	public int getFuelTankCapacity() {
 		return fuelTankCapacity;
 	}
 
-	private int getFuelInTank() {
+	public int getFuelInTank() {
 		return fuelInTank;
+		
 	}
 
-	int getMpg() {
+	public int getMpg() {
 		return mpg;
+	}
+	
+	public int getColor() {
+		return color;
 	}
 
 	public void drive() {
