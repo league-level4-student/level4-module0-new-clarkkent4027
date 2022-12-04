@@ -1,11 +1,8 @@
 package _03_Intro_to_Enums;
 
-import java.util.Random;
-
 import javax.swing.JOptionPane;
 
 enum Elements {
-
 	/*
 	 * enums (short for enumerated type) are a class-like structure that can contain
 	 * a set of specific data values.

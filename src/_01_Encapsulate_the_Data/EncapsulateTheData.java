@@ -60,6 +60,18 @@ public class EncapsulateTheData {
 
 	private String nomenclature;
 
+	public void setNomenclature(String nomenclature) {
+		if (nomenclature.isEmpty()) {
+			this.nomenclature = " ";
+		} else {
+			this.nomenclature = nomenclature;
+		}
+	}
+
+	public String getNomenclature() {
+		return nomenclature;
+	}
+
 	/*
 	 * memberObj must not be a String.
 	 * 
@@ -78,4 +90,16 @@ public class EncapsulateTheData {
 
 	private Object memberObj;
 
+	public void setMemberObj(Object memberObj) {
+		boolean test = (memberObj instanceof String);
+		if (test == true) {
+			this.memberObj = new Object();
+		} else {
+			this.memberObj = memberObj;
+		}
+	}
+
+	public Object getMemberObj() {
+		return memberObj;
+	}
 }
