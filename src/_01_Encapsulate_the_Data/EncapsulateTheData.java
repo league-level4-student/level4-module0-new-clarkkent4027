@@ -15,7 +15,7 @@ public class EncapsulateTheData {
 	private int itemsReceived;
 
 	public void setItemsReceived(int itemsReceived) {
-		if (itemsReceived >= 0) {
+		if (itemsReceived > 0) {
 			this.itemsReceived = itemsReceived;
 		} else {
 			this.itemsReceived = 0;
