@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import _04_Snake.Location.Direction;
+
 public class Snake {
 	public static final Color SNAKE_COLOR = Color.BLUE;
 	public static final int BODY_SIZE = 50;
@@ -37,13 +39,29 @@ public class Snake {
 		 * Create variables for the next X and Y location of the snake's head.
 		 * Initialize them to the current X and Y locations.
 		 */
-
+		int nextX = this.getHeadLocation().x;
+		int nextY = this.getHeadLocation().y;
 		/*
 		 * Use a switch statement to check on the currentDirection of the snake and
 		 * calculate the head's next x and y position. Depending on the direction, the
 		 * variables you created may increase or decrease by 1.
 		 */
-
+		switch (currentDirection) {
+		case UP:
+			nextY = nextY + 1;
+			break;
+		case DOWN:
+			nextY = nextY - 1;
+			break;
+		case RIGHT:
+			nextX = nextX + 1;
+			break;
+		case LEFT:
+			nextX = nextX - 1;
+			break;
+		default:
+			break;
+		}
 		/*
 		 * Change the Location of each SnakeSegment in your snake ArrayList to the
 		 * Location of the segment in front of it.
@@ -51,7 +69,9 @@ public class Snake {
 		 * Use a loop starting at the end of the ArrayList and stop before the head of
 		 * the snake (index 0) or you will go out of bounds.
 		 */
-
+		for (int i = snake.size() - 1; i > 0; i--) {
+			snake.get(i).setLocation(snake.get(i - 1).getLocation());
+		}
 		/*
 		 * Create a new Location object and initialize it with the values calculated in
 		 * the first step. Then set the head's location equal to the new location.
@@ -61,7 +81,7 @@ public class Snake {
 
 	}
 
-	public void setDirection(Direction direction) {
+	public void setDirection(nextx direction) {
 
 		/*
 		 * If the passed in direction is not the opposite direction of currentDirection
@@ -73,7 +93,7 @@ public class Snake {
 
 	}
 
-	private boolean isNotOppositeDirection(Direction direction) {
+	private boolean isNotOppositeDirection(nextx direction) {
 
 		/*
 		 * Complete the method so it returns true if the passed in direction is not the
