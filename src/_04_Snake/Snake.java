@@ -18,7 +18,7 @@ public class Snake {
 
 	private boolean canMove = true;
 
-	public Snake(Location location) {
+	Snake(Location location) {
 		snake = new ArrayList<SnakeSegment>();
 		head = new SnakeSegment(location, BODY_SIZE);
 		snake.add(head);
@@ -76,12 +76,14 @@ public class Snake {
 		 * Create a new Location object and initialize it with the values calculated in
 		 * the first step. Then set the head's location equal to the new location.
 		 */
+		Location newLocation = new Location(nextX, nextY);
 
+		head.setLocation(newLocation);
 		// Set the canMove member variable to true.
-
+		canMove = true;
 	}
 
-	public void setDirection(nextx direction) {
+	public void setDirection(Direction direction) {
 
 		/*
 		 * If the passed in direction is not the opposite direction of currentDirection
@@ -90,10 +92,13 @@ public class Snake {
 		 * 
 		 * Hint: Use the isNotOppositeDirection method.
 		 */
-
+		if (isNotOppositeDirection(direction) == true && canMove == true) {
+			currentDirection = direction;
+			canMove = false;
+		}
 	}
 
-	private boolean isNotOppositeDirection(nextx direction) {
+	private boolean isNotOppositeDirection(Direction direction) {
 
 		/*
 		 * Complete the method so it returns true if the passed in direction is not the
@@ -102,27 +107,42 @@ public class Snake {
 		 * For example, if currentDirection is UP and the passed in direction is DOWN
 		 * this method should return false.
 		 */
+		if (direction.equals(Direction.UP) && currentDirection.equals(Direction.DOWN)) {
+			return false;
+		}
+		if (direction.equals(Direction.DOWN) && currentDirection.equals(Direction.UP)) {
+			return false;
+		}
+		if (direction.equals(Direction.RIGHT) && currentDirection.equals(Direction.LEFT)) {
+			return false;
+		}
+		if (direction.equals(Direction.LEFT) && currentDirection.equals(Direction.RIGHT)) {
+			return false;
+		}
 
 		return true;
+
 	}
 
 	public void resetLocation() {
 
 		// Clear the snake.
-
+		snake.clear();
 		/*
 		 * Create a new Location object for the head at SnakeGame.WIDTH / 2,
 		 * SnakeGame.HEIGHT / 2.
 		 */
-
+		Location location2 = new Location(SnakeGame.WIDTH / 2, SnakeGame.HEIGHT / 2);
+		head.setLocation(location2);
 		/*
 		 * Set the head member variable equal to a new SnakeSegment object. Use the
 		 * Location created in step 2 for the Location and the BODY_SIZE constant for
 		 * the size.
 		 */
+		head = new SnakeSegment(location2, BODY_SIZE);
 
 		// Add the head to the snake.
-
+		snake.add(head);
 	}
 
 	public boolean isOutOfBounds() {
@@ -131,8 +151,19 @@ public class Snake {
 		 * Complete the method so it returns true if the head of the snake is outside of
 		 * the window and false otherwise.
 		 */
-
-		return false;
+		if (head.getLocation().getY() > 15) {
+			return false;
+		}
+		if (head.getLocation().getY() < 0) {
+			return false;
+		}
+		if (head.getLocation().getX() > 12) {
+			return false;
+		}
+		if (head.getLocation().getX() < 0) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean isHeadCollidingWithBody() {

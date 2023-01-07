@@ -48,7 +48,6 @@ public class SnakeGame implements ActionListener, KeyListener {
 
 	public SnakeGame() {
 		snake = new Snake(new Location(WIDTH / 2, HEIGHT / 2));
-
 		window = new JFrame("Snake");
 		panel = new JPanel() {
 			private static final long serialVersionUID = 1L;
@@ -126,7 +125,6 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * and the WIDTH and HEIGHT variables respectively.
 		 */
 
-
 		/*
 		 * Set the foodLocation equal to the Location object you just created.
 		 * 
@@ -143,7 +141,6 @@ public class SnakeGame implements ActionListener, KeyListener {
 		// Tell the user their snake is dead.
 
 		// Ask the user if they want to play again.
-
 
 		/*
 		 * If the user wants to play again, call the snake's resetLocation method and
@@ -162,7 +159,6 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * If the snake's head is colliding with its own body or out of bounds call the
 		 * gameOver method.
 		 */
-
 
 		/*
 		 * If the location of the snake's head is equal to the location of the food,
