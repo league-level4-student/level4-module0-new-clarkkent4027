@@ -1,8 +1,8 @@
 package _04_Snake;
 
 public class Location {
-	public int x = 0;
-	public int y = 0;
+	public int x = 10;
+	public int y = 10;
 
 	public boolean equals(Location loc) {
 		if (loc.x == x && loc.y == y) {
