@@ -23,11 +23,11 @@ public class Location {
 
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return y;
 	}
 
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 }
